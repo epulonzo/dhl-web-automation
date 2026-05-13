@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Incident;
 use App\Services\AIService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class IncidentApiController extends Controller
 {
@@ -16,36 +17,49 @@ class IncidentApiController extends Controller
         $this->aiService = $aiService;
     }
 
-    public function index()
-    {
-        return response()->json(Incident::latest()->paginate(20));
-    }
-
+    /**
+     * Store a new incident from external source (UiPath Bot)
+     */
     public function store(Request $request)
     {
+        // Simple Token Check for Bot Security
+        $botToken = $request->header('X-Bot-Token');
+        if ($botToken !== config('services.bot.token', 'dhl_uipath_secret_2026')) {
+            return response()->json(['error' => 'Unauthorized Bot Access'], 401);
+        }
+
         $validated = $request->validate([
-            'raw_text' => 'required|string',
+            'message' => 'required|string',
             'sender' => 'nullable|string',
             'tracking_number' => 'nullable|string',
         ]);
 
-        $aiSummary = $this->aiService->summarizeComplaint($validated['raw_text']);
-        $category = $this->aiService->detectCategory($validated['raw_text']);
-        $priority = $this->aiService->suggestPriority($validated['raw_text']);
+        try {
+            // Trigger Gemini AI Analysis
+            $aiResult = $this->aiService->analyzeIncident($validated['message']);
 
-        $incident = Incident::create([
-            'title' => 'API Reported Incident',
-            'raw_text' => $validated['raw_text'],
-            'ai_summary' => $aiSummary,
-            'category' => $category,
-            'priority' => $priority,
-            'status' => 'New',
-            'tracking_number' => $validated['tracking_number'],
-        ]);
+            $incident = Incident::create([
+                'title' => 'Bot Reported: ' . ($validated['tracking_number'] ?? 'New Complaint'),
+                'description' => $validated['message'],
+                'category' => $aiResult['category'] ?? 'Customer Complaint',
+                'priority' => $aiResult['priority'] ?? 'Medium',
+                'status' => 'New',
+                'tracking_number' => $validated['tracking_number'] ?? null,
+                'ai_summary' => $aiResult['summary'] ?? null,
+                'ai_suggested_category' => $aiResult['category'] ?? null,
+                'ai_suggested_priority' => $aiResult['priority'] ?? null,
+                'ai_raw_response' => $aiResult,
+            ]);
 
-        return response()->json([
-            'message' => 'Incident stored successfully via API',
-            'incident' => $incident
-        ], 201);
+            return response()->json([
+                'success' => true,
+                'incident_id' => $incident->id,
+                'ai_analysis' => $aiResult
+            ], 201);
+
+        } catch (\Exception $e) {
+            Log::error('API Incident Store Failure: ' . $e->getMessage());
+            return response()->json(['error' => 'Server Error'], 500);
+        }
     }
 }

@@ -55,7 +55,8 @@ class IncidentController extends Controller
             'attachment' => 'nullable|file|max:10240',
         ]);
 
-        $incident = new Incident($validated);
+        $incident = new Incident();
+        $incident->fill($request->except('attachment'));
         $incident->status = 'New';
 
         // Trigger AI Analysis for Phase 2
@@ -68,7 +69,9 @@ class IncidentController extends Controller
         }
 
         if ($request->hasFile('attachment')) {
-            $path = $request->file('attachment')->store('attachments', 'public');
+            $file = $request->file('attachment');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('attachments', $filename, 'public');
             $incident->attachment = $path;
         }
 
