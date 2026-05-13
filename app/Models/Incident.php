@@ -19,6 +19,14 @@ class Incident extends Model
         'tracking_number',
         'assigned_to',
         'attachment',
+        'ai_summary',
+        'ai_suggested_category',
+        'ai_suggested_priority',
+        'ai_raw_response',
+    ];
+
+    protected $casts = [
+        'ai_raw_response' => 'array',
     ];
 
     public function assignedStaff(): BelongsTo

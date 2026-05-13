@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Incident;
+use App\Services\AIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IncidentController extends Controller
 {
+    protected $aiService;
+
+    public function __construct(AIService $aiService)
+    {
+        $this->aiService = $aiService;
+    }
+
     public function index(Request $request)
     {
         $query = Incident::with('assignedStaff');
@@ -50,6 +58,15 @@ class IncidentController extends Controller
         $incident = new Incident($validated);
         $incident->status = 'New';
 
+        // Trigger AI Analysis for Phase 2
+        $aiResult = $this->aiService->analyzeIncident($request->description);
+        if ($aiResult) {
+            $incident->ai_summary = $aiResult['summary'] ?? null;
+            $incident->ai_suggested_category = $aiResult['category'] ?? null;
+            $incident->ai_suggested_priority = $aiResult['priority'] ?? null;
+            $incident->ai_raw_response = $aiResult;
+        }
+
         if ($request->hasFile('attachment')) {
             $path = $request->file('attachment')->store('attachments', 'public');
             $incident->attachment = $path;
@@ -57,7 +74,7 @@ class IncidentController extends Controller
 
         $incident->save();
 
-        return redirect()->route('incidents.show', $incident)->with('success', 'Incident reported successfully.');
+        return redirect()->route('incidents.show', $incident)->with('success', 'Incident reported. AI analysis complete.');
     }
 
     public function show(Incident $incident)
