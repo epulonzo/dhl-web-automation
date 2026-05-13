@@ -38,16 +38,20 @@ class IncidentApiController extends Controller
             // Trigger Gemini AI Analysis
             $aiResult = $this->aiService->analyzeIncident($validated['message']);
 
+            // Normalize AI response casing for database consistency
+            $category = ucwords(strtolower($aiResult['category'] ?? 'Customer Complaint'));
+            $priority = ucwords(strtolower($aiResult['priority'] ?? 'Medium'));
+
             $incident = Incident::create([
                 'title' => 'Bot Reported: ' . ($validated['tracking_number'] ?? 'New Complaint'),
                 'description' => $validated['message'],
-                'category' => $aiResult['category'] ?? 'Customer Complaint',
-                'priority' => $aiResult['priority'] ?? 'Medium',
+                'category' => $category,
+                'priority' => $priority,
                 'status' => 'New',
                 'tracking_number' => $validated['tracking_number'] ?? null,
                 'ai_summary' => $aiResult['summary'] ?? null,
-                'ai_suggested_category' => $aiResult['category'] ?? null,
-                'ai_suggested_priority' => $aiResult['priority'] ?? null,
+                'ai_suggested_category' => $category,
+                'ai_suggested_priority' => $priority,
                 'ai_raw_response' => $aiResult,
             ]);
 

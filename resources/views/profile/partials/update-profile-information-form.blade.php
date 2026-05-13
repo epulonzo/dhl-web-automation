@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-xl font-black text-white tracking-tight">
             {{ __('Profile Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-2 text-sm text-gray-400 font-medium italic">
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
@@ -56,7 +56,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    class="text-sm text-green-400 font-bold"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>

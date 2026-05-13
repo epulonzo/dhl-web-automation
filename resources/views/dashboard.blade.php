@@ -109,7 +109,11 @@
                             <div class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">{{ $incident->category }}</div>
                         </td>
                         <td class="px-8 py-5">
-                            <span class="px-3 py-1 text-[10px] font-black uppercase rounded-lg {{ $incident->priority == 'High' || $incident->priority == 'Critical' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-gray-800 text-gray-300 border border-gray-700' }}">
+                            <span class="px-3 py-1 text-[10px] font-black uppercase rounded-lg 
+                                {{ $incident->priority == 'Critical' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 
+                                   ($incident->priority == 'High' ? 'bg-orange-500/10 text-orange-400 border border-orange-500/20' : 
+                                   ($incident->priority == 'Medium' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' : 
+                                   'bg-green-500/10 text-green-400 border border-green-500/20')) }}">
                                 {{ $incident->status }}
                             </span>
                         </td>

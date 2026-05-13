@@ -62,9 +62,12 @@ class IncidentController extends Controller
         // Trigger AI Analysis for Phase 2
         $aiResult = $this->aiService->analyzeIncident($request->description);
         if ($aiResult) {
+            $normalizedCategory = ucwords(strtolower($aiResult['category'] ?? ''));
+            $normalizedPriority = ucwords(strtolower($aiResult['priority'] ?? ''));
+            
             $incident->ai_summary = $aiResult['summary'] ?? null;
-            $incident->ai_suggested_category = $aiResult['category'] ?? null;
-            $incident->ai_suggested_priority = $aiResult['priority'] ?? null;
+            $incident->ai_suggested_category = $normalizedCategory ?: null;
+            $incident->ai_suggested_priority = $normalizedPriority ?: null;
             $incident->ai_raw_response = $aiResult;
         }
 
