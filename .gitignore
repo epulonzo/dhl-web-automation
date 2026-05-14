@@ -1,15 +1,18 @@
-/vendor
-/node_modules
-/public/build
-/public/hot
-/storage/*.key
-/storage/logs
-/storage/framework/cache
-/storage/framework/sessions
-/storage/framework/views
-/bootstrap/cache
-.env
-.phpunit.cache
+# Laravel
+/web-laravel/vendor
+/web-laravel/node_modules
+/web-laravel/public/build
+/web-laravel/public/hot
+/web-laravel/storage/*.key
+/web-laravel/storage/logs
+/web-laravel/storage/framework/cache
+/web-laravel/storage/framework/sessions
+/web-laravel/storage/framework/views
+/web-laravel/bootstrap/cache
+/web-laravel/.env
+/web-laravel/.phpunit.cache
+
+# Common
 .idea
 .vscode
 .DS_Store
@@ -17,12 +20,12 @@ npm-debug.log
 yarn-error.log
 
 # UiPath
-**/dhl_automation_uipath/.local/
-**/dhl_automation_uipath/.settings/
-**/dhl_automation_uipath/.objects/
-**/dhl_automation_uipath/.tmh/
-**/dhl_automation_uipath/.templates/
-**/dhl_automation_uipath/.entities/
-**/dhl_automation_uipath/.project/
-**/dhl_automation_uipath/bin/
-**/dhl_automation_uipath/obj/
+/dhl_automation_uipath/.local/
+/dhl_automation_uipath/.settings/
+/dhl_automation_uipath/.objects/
+/dhl_automation_uipath/.tmh/
+/dhl_automation_uipath/.templates/
+/dhl_automation_uipath/.entities/
+/dhl_automation_uipath/.project/
+/dhl_automation_uipath/bin/
+/dhl_automation_uipath/obj/
