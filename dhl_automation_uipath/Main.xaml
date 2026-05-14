@@ -101,6 +101,12 @@
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="826.8000000000001,2115.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="TotalCreated" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="TotalUpdated" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="TotalDuplicates" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="TotalFailed" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

@@ -44,24 +44,50 @@ class IncidentApiController extends Controller
                 Log::warning('AI skipped for bot request: ' . $e->getMessage());
             }
 
-            $incident = Incident::create([
-                'title'                  => 'Bot Reported: ' . ($validated['tracking_number'] ?? 'New Complaint'),
-                'description'            => $validated['message'],
-                'category'               => $category,
-                'priority'               => $priority,
-                'status'                 => 'New',
-                'tracking_number'        => $validated['tracking_number'] ?? null,
-                'ai_summary'             => $summary,
-                'ai_suggested_category'  => $category,
-                'ai_suggested_priority'  => $priority,
-                'ai_raw_response'        => null,
-            ]);
+            $status = 'created';
+            $incidentId = null;
+
+            $existingIncident = null;
+            if (!empty($validated['tracking_number'])) {
+                $existingIncident = Incident::where('tracking_number', $validated['tracking_number'])->first();
+            }
+
+            if ($existingIncident) {
+                if ($existingIncident->description === $validated['message']) {
+                    $status = 'duplicate';
+                    $incidentId = $existingIncident->id;
+                } else {
+                    // Update the existing incident
+                    $existingIncident->update([
+                        'description' => $validated['message'],
+                        'ai_summary'  => $summary,
+                    ]);
+                    $status = 'updated';
+                    $incidentId = $existingIncident->id;
+                }
+            } else {
+                // Create new incident
+                $incident = Incident::create([
+                    'title'                  => 'Bot Reported: ' . ($validated['tracking_number'] ?? 'New Complaint'),
+                    'description'            => $validated['message'],
+                    'category'               => $category,
+                    'priority'               => $priority,
+                    'status'                 => 'New',
+                    'tracking_number'        => $validated['tracking_number'] ?? null,
+                    'ai_summary'             => $summary,
+                    'ai_suggested_category'  => $category,
+                    'ai_suggested_priority'  => $priority,
+                    'ai_raw_response'        => null,
+                ]);
+                $incidentId = $incident->id;
+            }
 
             return response()->json([
                 'success'     => true,
-                'incident_id' => $incident->id,
-                'message'     => 'Incident created successfully',
-            ], 201);
+                'status'      => $status,
+                'incident_id' => $incidentId,
+                'message'     => 'Incident processed successfully',
+            ], $status === 'created' ? 201 : 200);
 
         } catch (\Exception $e) {
             Log::error('API Incident Store Failure: ' . $e->getMessage());

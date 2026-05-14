@@ -54,6 +54,7 @@ class AIService
             }";
 
             $response = Http::withoutVerifying()
+                ->timeout(10)
                 ->withToken($this->apiKey)
                 ->post($this->baseUrl, [
                     'model' => $this->model,
