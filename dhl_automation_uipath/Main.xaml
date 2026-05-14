@@ -1,0 +1,241 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:gadvd="clr-namespace:Google.Apis.Drive.v3.Data;assembly=Google.Apis.Drive.v3" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugad="clr-namespace:UiPath.GSuite.Activities.Drive;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>Google.Apis.Drive.v3.Data</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.Web.Activities.Http</x:String>
+      <x:String>UiPath.Web.Activities.Http.Models</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Google.Apis.Requests</x:String>
+      <x:String>Google.Apis.Drive.v3</x:String>
+      <x:String>Google.Apis</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Google.Apis.Drive.v3</AssemblyReference>
+      <AssemblyReference>Google.Apis.Core</AssemblyReference>
+      <AssemblyReference>Google.Apis</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="826.8000000000001,2115.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ugad:GoogleDriveApplicationScope ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" Timeout="{x:Null}" Account="saifulaqil@gmail.com" Connector="uipath-google-drive" DisplayName="Use Google Drive" sap:VirtualizedContainerService.HintSize="553.6,2092" sap2010:WorkflowViewState.IdRef="GoogleDriveApplicationScope_1" UseConnectionService="False" UserEmail="saifulaqil@gmail.com">
+      <ugad:GoogleDriveApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ugad:IGoogleDriveTarget">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ugad:IGoogleDriveTarget" Name="GoogleDrive" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="520,1927.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="gadvd:File[]" Name="driveFiles" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uga:FindFiles ContinueOnError="{x:Null}" FirstResultId="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" DriveTarget="[GoogleDrive]" sap:VirtualizedContainerService.HintSize="486.4,113.6" sap2010:WorkflowViewState.IdRef="FindFiles_1" MaxResults="50" Result="[driveFiles]" SearchExpression="'1PI1nhHhbufF_HLM4atvADxI1UNzhJwEj' in parents and name contains '.txt' and trashed=false" SupportsTeamDrives="False" />
+            <ui:ForEach x:TypeArguments="gadvd:File" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="486.4,1753.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[driveFiles]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="gadvd:File">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="gadvd:File" Name="currentFile" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484.8,1632" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="fileContent" />
+                      <Variable x:TypeArguments="x:String" Name="trackingNumber" />
+                      <Variable x:TypeArguments="x:String" Name="jsonPayload" />
+                      <Variable x:TypeArguments="x:String" Name="httpResponse" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uga:DownloadFileConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" File="{x:Null}" FileFriendlyName="{x:Null}" ManualEntryFileId="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" ConflictResolution="Replace" ConnectionId="c079a981-7a19-451d-ac44-97477afec6a5" ContinueOnError="True" DestinationPath="C:\Users\saifu\Downloads\dhl-download" DisplayName="Download File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileInputMode="UrlOrId" sap:VirtualizedContainerService.HintSize="451.2,184.8" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_2" ManualFileId="[currentFile.Id]" UseConnectionService="True">
+                      <uga:DownloadFileConnections.FileIdBackup>
+                        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UrlOrId">
+                          <usau:BackupSlot.BackupValues>
+                            <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                              <x:Null />
+                              <x:Null />
+                              <x:Null />
+                            </scg:List>
+                            <scg:List x:TypeArguments="x:Object" x:Key="UrlOrId" Capacity="1">
+                              <InArgument x:TypeArguments="x:String">[currentFile.Id]</InArgument>
+                            </scg:List>
+                          </usau:BackupSlot.BackupValues>
+                        </usau:BackupSlot>
+                      </uga:DownloadFileConnections.FileIdBackup>
+                      <uga:DownloadFileConnections.Item>
+                        <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" ConnectionKey="c079a981-7a19-451d-ac44-97477afec6a5" IdOrUrl="[currentFile.Id]" InputMode="UrlOrId">
+                          <ugam:DriveItemArgument.FullPathHint>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </ugam:DriveItemArgument.FullPathHint>
+                          <ugam:DriveItemArgument.ParentIdFullPathHint>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </ugam:DriveItemArgument.ParentIdFullPathHint>
+                        </ugam:DriveItemArgument>
+                      </uga:DownloadFileConnections.Item>
+                    </uga:DownloadFileConnections>
+                    <If Condition="[System.IO.File.Exists(&quot;C:\Users\saifu\Downloads\dhl-download\&quot; &amp; currentFile.Name)]" DisplayName="If File Exists" sap:VirtualizedContainerService.HintSize="451.2,1387.2" sap2010:WorkflowViewState.IdRef="If_FileExists_1">
+                      <If.Then>
+                        <Sequence DisplayName="Process File" sap:VirtualizedContainerService.HintSize="449.6,1168" sap2010:WorkflowViewState.IdRef="Sequence_Process_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ReadTextFile File="{x:Null}" Content="[fileContent]" ContinueOnError="False" DisplayName="Read Text File" FileName="[&quot;C:\Users\saifu\Downloads\dhl-download\&quot; &amp; currentFile.Name]" sap:VirtualizedContainerService.HintSize="416,123.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+                          <Assign DisplayName="Extract Tracking Number" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[trackingNumber]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(fileContent, "MY\d+|DHL\d+").Value]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Build JSON Payload" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[jsonPayload]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[Newtonsoft.Json.JsonConvert.SerializeObject(New Dictionary(Of String, Object) From {{"message", fileContent}, {"tracking_number", trackingNumber}, {"sender", "UiPath Bot"}})]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <WriteLine DisplayName="Debug: Print JSON" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[jsonPayload]" />
+                          <Assign DisplayName="POST to Laravel API" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_HTTP_1">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[httpResponse]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[New System.Net.Http.HttpClient().PostAsync("http://127.0.0.1:8000/api/incidents/store", New System.Net.Http.StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json")).Result.Content.ReadAsStringAsync().Result]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <WriteLine DisplayName="Debug: API Response" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Response: &quot; &amp; httpResponse]" />
+                          <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="416,112.8" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[&quot;C:\Users\saifu\Downloads\dhl-download\&quot; &amp; currentFile.Name]" />
+                          <uga:DeleteFile ContinueOnError="{x:Null}" AuthScopesInvalid="False" DisplayName="Delete File" DriveTarget="[GoogleDrive]" FileId="[currentFile.Id]" sap:VirtualizedContainerService.HintSize="416,104" sap2010:WorkflowViewState.IdRef="DeleteFile_1" SupportsTeamDrives="False" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Skip File" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_Skip_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </ActivityAction>
+      </ugad:GoogleDriveApplicationScope.Body>
+      <ugad:GoogleDriveApplicationScope.CredentialID>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ugad:GoogleDriveApplicationScope.CredentialID>
+      <ugad:GoogleDriveApplicationScope.CredentialSecret>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ugad:GoogleDriveApplicationScope.CredentialSecret>
+    </ugad:GoogleDriveApplicationScope>
+  </Sequence>
+</Activity>

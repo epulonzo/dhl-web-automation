@@ -1,0 +1,6 @@
+{
+  "Name": "dhl_automation",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "Main.xaml"
+}

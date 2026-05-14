@@ -15,3 +15,14 @@
 .DS_Store
 npm-debug.log
 yarn-error.log
+
+# UiPath
+**/dhl_automation_uipath/.local/
+**/dhl_automation_uipath/.settings/
+**/dhl_automation_uipath/.objects/
+**/dhl_automation_uipath/.tmh/
+**/dhl_automation_uipath/.templates/
+**/dhl_automation_uipath/.entities/
+**/dhl_automation_uipath/.project/
+**/dhl_automation_uipath/bin/
+**/dhl_automation_uipath/obj/
