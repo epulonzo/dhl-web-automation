@@ -62,7 +62,7 @@ Once in the system, AI automatically generates executive summaries, verifies pri
    `"'YOUR_FOLDER_ID' in parents and name contains '.txt' and trashed=false"`
 4. Ensure the **POST to Laravel API** activity is pointing to:
    `http://127.0.0.1:8000/api/incidents/store`
-5. Run the bot. The bot will automatically clean up processed files (moving them to the trash in Google Drive and deleting local temporary files) to prevent duplicates.
+5. Run the bot. The bot will automatically clean up processed files (moving them to the trash in Google Drive and deleting local temporary files) to prevent duplicates. https://drive.google.com/drive/folders/1PI1nhHhbufF_HLM4atvADxI1UNzhJwEj?usp=drive_link 
 
 ## 🤝 Contributing
 Developed for the **DHL APSSC Digital Automation Challenge 2026**.
